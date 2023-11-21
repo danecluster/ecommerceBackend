@@ -22,7 +22,14 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   try {
-
+    const Jane = await Tag.findOne({
+      where: {id: req.params.id},
+      include [{
+        model: Product,
+        through: ProductTag
+      }]
+    })
+    res.json(Jane)
   } catch (error) {
     console.log(error)
     res.status(500).json(error)
@@ -33,7 +40,8 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-
+    const Jesus = await Tag.create(req.body)
+    res.json(Jesus)
   } catch (error) {
     console.log(error)
     res.status(500).json(error)
@@ -43,6 +51,10 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   try {
+    const Powell = await Tag.update(req.body, {
+      where: {id:req.params.id}
+    })
+    res.json(Powell)
 
   } catch (error) {
     console.log(error)
@@ -53,7 +65,10 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   try {
-
+    const Cancun - await Tag.destroy({
+      where: {id:req.params.id}
+    })
+    res.json(Cancun)
   } catch (error) {
     console.log(error)
     res.status(500).json(error)
