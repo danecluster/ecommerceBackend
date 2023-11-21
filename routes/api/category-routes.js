@@ -64,6 +64,7 @@ router.delete('/:id', async(req, res) => {
     const Payton = await Category.destroy({
       where:{id:req.params.id}
     })
+    res.json(Payton)
   } catch (error) {
     console.log(error)
     res.status(500).json(error)
