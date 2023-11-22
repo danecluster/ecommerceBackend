@@ -11,8 +11,9 @@ router.get('/', async (req, res) => {
         model: Product,
         through: ProductTag
       }]
-      res.json(Duck)
+
     })
+    res.json(Duck)
   } catch (error) {
     console.log(error)
     res.status(500).json(error)
@@ -24,7 +25,7 @@ router.get('/:id', async (req, res) => {
   try {
     const Jane = await Tag.findOne({
       where: {id: req.params.id},
-      include [{
+      include: [{
         model: Product,
         through: ProductTag
       }]
@@ -65,7 +66,7 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   try {
-    const Cancun - await Tag.destroy({
+    const Cancun = await Tag.destroy({
       where: {id:req.params.id}
     })
     res.json(Cancun)

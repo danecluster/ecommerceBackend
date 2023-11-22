@@ -9,7 +9,7 @@ router.get('/', async(req, res) => {
     const Katie = await Product.findAll({
       include: [Category, {model:Tag,through:Product.Tag}]
       })
-      res.json(mcProduct)
+      res.json(Katie)
     } catch (error) {
       console.log(error)
       res.status(500).json(error)
@@ -113,16 +113,16 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', async(req, res) => {
   try {
-      const mcProduct = await Product.destroy({
+      const Katie = await Product.destroy({
         where: {id:req.params.id}
       })
       res.json(Katie)
-      catch (error) {
+    }catch(error) {
       console.log(error)
       res.status(500).json(error)
-      }
-}
+      }}
+
   // delete one product by its `id` value
-});
+);
 
 module.exports = router;
